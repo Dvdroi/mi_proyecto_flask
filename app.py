@@ -1,25 +1,22 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template_string('''
-    <h1>¡Bienvenido al proyecto de David Cerda!</h1>
-    <p>Esta es mi aplicación Flask personalizada.</p>
-    <ul>
-        <li><a href="/usuario/David">Ver perfil de David</a></li>
-        <li><a href="/about">Acerca de</a></li>
-    </ul>
-    ''')
+    return render_template('index.html')
 
 @app.route('/usuario/<nombre>')
 def usuario(nombre):
-    return f'<h1>Perfil de {nombre}</h1><p>¡Hola {nombre}!</p>'
+    return render_template('usuario.html', nombre=nombre)
 
 @app.route('/about')
 def about():
-    return '<h1>Acerca de David Cerda</h1><p>Desarrollador Python/Flask</p>'
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)

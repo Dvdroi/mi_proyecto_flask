@@ -1,78 +1,46 @@
 {% extends "base.html" %}
 
-{% block title %}{{ title }} - Mi Proyecto Flask{% endblock %}
-
 {% block content %}
-<div class="row">
-    <div class="col-lg-12">
-        <!-- Hero Section -->
-        <div class="jumbotron bg-gradient text-white rounded p-5 mb-4" 
-             style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <h1 class="display-4">{{ message }}</h1>
-            <p class="lead">Esta es una aplicación web desarrollada con Flask y plantillas Jinja2.</p>
-            <hr class="my-4 bg-white">
-            <p>Explora las diferentes secciones de la aplicación usando el menú de navegación.</p>
-            <a class="btn btn-light btn-lg" href="{{ url_for('about') }}" role="button">
-                Conocer más
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <!-- Tarjetas de características -->
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body text-center">
-                <i class="fas fa-code fa-3x text-primary mb-3"></i>
-                <h5 class="card-title">Flask Framework</h5>
-                <p class="card-text">Aplicación construida con Flask, un framework web ligero y potente de Python.</p>
+<section class="hero-section d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-4">
+                        ¡Hola! Soy <span class="text-primary">David Cerda</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        Desarrollador Full Stack apasionado por crear soluciones web innovadoras.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="/about" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-user me-2"></i>Conocer más
+                        </a>
+                        <a href="/contact" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>Contactar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-buttons">
+                            <span class="btn-close-window red"></span>
+                            <span class="btn-close-window yellow"></span>
+                            <span class="btn-close-window green"></span>
+                        </div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>class Desarrollador:
+    def __init__(self):
+        self.nombre = "David Cerda"
+        self.skills = ["Python", "Flask"]
+        self.pasion = "Crear código limpio"</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body text-center">
-                <i class="fas fa-paint-brush fa-3x text-success mb-3"></i>
-                <h5 class="card-title">Plantillas Dinámicas</h5>
-                <p class="card-text">Usa Jinja2 para crear plantillas reutilizables y contenido dinámico.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body text-center">
-                <i class="fas fa-mobile-alt fa-3x text-info mb-3"></i>
-                <h5 class="card-title">Responsive Design</h5>
-                <p class="card-text">Diseño adaptable que se ve bien en dispositivos móviles y desktop.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Sección de información adicional -->
-<div class="row mt-5">
-    <div class="col-lg-8 mx-auto">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h3 class="mb-0">¿Qué puedes hacer aquí?</h3>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Explorar la estructura de un proyecto Flask</li>
-                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Ver cómo funcionan las plantillas Jinja2</li>
-                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Aprender sobre herencia de plantillas</li>
-                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Entender el routing en Flask</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<!-- Font Awesome para los iconos -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</section>
 {% endblock %}

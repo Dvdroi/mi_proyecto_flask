@@ -1,0 +1,22 @@
+{%% extends "base.html" %%}
+
+{%% block content %%}
+<section class="content-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5 text-center">
+                        <i class="fas fa-user-circle fa-5x text-primary mb-4"></i>
+                        <h1>Perfil de {{ nombre }}</h1>
+                        <p class="lead">¡Hola {{ nombre }}! Bienvenido a mi aplicación Flask.</p>
+                        <div class="mt-4">
+                            <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> Volver al Inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%% endblock %%}
