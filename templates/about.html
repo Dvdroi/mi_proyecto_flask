@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Mi Proyecto Flask{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">{{ info.nombre }}</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Información del Proyecto</h5>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><strong>Nombre:</strong></td>
+                                <td>{{ info.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Versión:</strong></td>
+                                <td><span class="badge bg-primary">{{ info.version }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Autor:</strong></td>
+                                <td>{{ info.autor }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Descripción</h5>
+                        <p class="text-muted">{{ info.descripcion }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tecnologías usadas -->
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Tecnologías Utilizadas</h4>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 border rounded">
+                            <i class="fab fa-python fa-3x text-primary mb-2"></i>
+                            <h6>Python</h6>
+                            <small class="text-muted">Lenguaje de programación</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 border rounded">
+                            <i class="fas fa-flask fa-3x text-success mb-2"></i>
+                            <h6>Flask</h6>
+                            <small class="text-muted">Framework web</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 border rounded">
+                            <i class="fab fa-html5 fa-3x text-warning mb-2"></i>
+                            <h6>HTML5</h6>
+                            <small class="text-muted">Estructura web</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 border rounded">
+                            <i class="fab fa-bootstrap fa-3x text-info mb-2"></i>
+                            <h6>Bootstrap</h6>
+                            <small class="text-muted">Framework CSS</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Características del proyecto -->
+<div class="row mt-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Características del Proyecto</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Frontend</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">✅ Plantillas Jinja2</li>
+                            <li class="list-group-item">✅ Bootstrap 5</li>
+                            <li class="list-group-item">✅ Diseño responsive</li>
+                            <li class="list-group-item">✅ Font Awesome icons</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Backend</h6>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">✅ Flask routing</li>
+                            <li class="list-group-item">✅ Template inheritance</li>
+                            <li class="list-group-item">✅ Static files serving</li>
+                            <li class="list-group-item">✅ Debug mode</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+{% endblock %}
