@@ -1,69 +1,68 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-<<<<<<< HEAD
-{% block title %}Inicio - Mi Proyecto Flask{% endblock %}
+{% block title %}Mi Proyecto Flask - Inicio{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8 mx-auto">
-        <div class="jumbotron bg-light p-5 rounded">
-            <h1 class="display-4">¡Bienvenido a Mi Proyecto Flask!</h1>
-            <p class="lead">Este proyecto demuestra la persistencia de datos usando diferentes métodos:</p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">📄 Archivos TXT</li>
-                <li class="list-group-item">📋 Archivos JSON</li>
-                <li class="list-group-item">📊 Archivos CSV</li>
-                <li class="list-group-item">🗄️ Base de datos SQLite</li>
-            </ul>
-            <hr class="my-4">
-            <p>Navega por las diferentes secciones para ver cómo funciona cada método de persistencia.</p>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('formulario') }}" role="button">Empezar</a>
+<div class="header">
+    <h1>🚀 Mi Proyecto Flask</h1>
+    <p>Gestión de usuarios con múltiples formatos de almacenamiento</p>
+</div>
+
+<div class="card">
+    <h2>Bienvenido a la Aplicación</h2>
+    <p>Esta aplicación te permite registrar usuarios y almacenar la información en diferentes formatos:</p>
+    
+    <div class="options-grid">
+        <div class="option-card">
+            <h3>📝 Archivo TXT</h3>
+            <p>Almacenamiento simple en texto plano</p>
+            <a href="{{ url_for('formulario') }}" class="btn">Registrar Usuario</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>📊 Archivo JSON</h3>
+            <p>Formato estructurado para datos</p>
+            <a href="{{ url_for('formulario') }}" class="btn btn-secondary">Registrar Usuario</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>📋 Archivo CSV</h3>
+            <p>Compatible con hojas de cálculo</p>
+            <a href="{{ url_for('formulario') }}" class="btn btn-success">Registrar Usuario</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>🗄️ Base de Datos</h3>
+            <p>SQLite para consultas avanzadas</p>
+            <a href="{{ url_for('formulario') }}" class="btn btn-info">Registrar Usuario</a>
         </div>
     </div>
 </div>
-=======
-{% block content %}
-<section class="hero-section d-flex align-items-center">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <h1 class="display-4 fw-bold mb-4">
-                        ¡Hola! Soy <span class="text-primary">David Cerda</span>
-                    </h1>
-                    <p class="lead mb-4">
-                        Desarrollador Full Stack apasionado por crear soluciones web innovadoras.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="/about" class="btn btn-primary btn-lg me-3">
-                            <i class="fas fa-user me-2"></i>Conocer más
-                        </a>
-                        <a href="/contact" class="btn btn-outline-primary btn-lg">
-                            <i class="fas fa-envelope me-2"></i>Contactar
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-buttons">
-                            <span class="btn-close-window red"></span>
-                            <span class="btn-close-window yellow"></span>
-                            <span class="btn-close-window green"></span>
-                        </div>
-                    </div>
-                    <div class="code-content">
-                        <pre><code>class Desarrollador:
-    def __init__(self):
-        self.nombre = "David Cerda"
-        self.skills = ["Python", "Flask"]
-        self.pasion = "Crear código limpio"</code></pre>
-                    </div>
-                </div>
-            </div>
+
+<div class="card">
+    <h2>Ver Datos Almacenados</h2>
+    <p>Consulta la información guardada en cada formato:</p>
+    
+    <div class="options-grid">
+        <div class="option-card">
+            <h3>📄 Datos TXT</h3>
+            <a href="{{ url_for('mostrar_datos', formato='txt') }}" class="btn">Ver Datos</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>📋 Datos JSON</h3>
+            <a href="{{ url_for('mostrar_datos', formato='json') }}" class="btn btn-secondary">Ver Datos</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>📊 Datos CSV</h3>
+            <a href="{{ url_for('mostrar_datos', formato='csv') }}" class="btn btn-success">Ver Datos</a>
+        </div>
+        
+        <div class="option-card">
+            <h3>🗃️ Datos BD</h3>
+            <a href="{{ url_for('mostrar_datos', formato='bd') }}" class="btn btn-info">Ver Datos</a>
         </div>
     </div>
-</section>
->>>>>>> 9bddd804a0b953ccb0f048ca2ad739fcc0ce6349
+</div>
 {% endblock %}
