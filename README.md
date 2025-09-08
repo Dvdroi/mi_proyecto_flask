@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Mi Proyecto Flask
 
 Una aplicación web desarrollada con Flask que permite gestionar usuarios mediante diferentes métodos de almacenamiento.
@@ -99,3 +100,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más deta
 ---
 
 ⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
+=======
+"# Mi Proyecto Flask" 
+"Aplicaci�n web desarrollada con Flask" 
+>>>>>>> 9bddd804a0b953ccb0f048ca2ad739fcc0ce6349

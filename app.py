@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import csv
@@ -235,3 +236,27 @@ if __name__ == '__main__':
     print("🗄️ Verificando y corrigiendo base de datos...")
     
     app.run(debug=True, port=5000)
+=======
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/usuario/<nombre>')
+def usuario(nombre):
+    return render_template('usuario.html', nombre=nombre)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
+>>>>>>> 9bddd804a0b953ccb0f048ca2ad739fcc0ce6349
