@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🚀 Mi Proyecto Flask
 
 Una aplicación web desarrollada con Flask que permite gestionar usuarios mediante diferentes métodos de almacenamiento.
@@ -6,101 +5,73 @@ Una aplicación web desarrollada con Flask que permite gestionar usuarios median
 ## ✨ Características
 
 - 📝 **Formulario de registro** - Captura nombre, email y edad
-- 💾 **Múltiples métodos de guardado**:
+- 💾 **Múltiples métodos de almacenamiento**:
   - Archivo TXT
   - Archivo JSON
   - Archivo CSV
   - Base de datos SQLite
-- 📊 **Visualización de datos** - Consulta los datos guardados en cada formato
-- 🎨 **Interfaz moderna** - Diseño responsive con Bootstrap
-- ⚡ **Funcionamiento en tiempo real** - Actualización inmediata de datos
+- 📊 **Visualización de datos** por cada formato
+- 🎨 **Interfaz moderna** con Bootstrap 5
+
+## 🌐 Demo
+
+[Ver aplicación en vivo](https://mi-proyecto-flask.onrender.com)
 
 ## 🛠️ Tecnologías utilizadas
 
-- **Backend**: Python 3.x, Flask
+- **Backend**: Flask (Python)
 - **Frontend**: HTML5, CSS3, Bootstrap 5
 - **Base de datos**: SQLite
 - **Despliegue**: Render
 
-## 📋 Requisitos
-
-- Python 3.7+
-- Flask 2.3.3
-- Gunicorn (para producción)
-
 ## 🚀 Instalación local
 
-1. **Clona el repositorio**:
+1. Clona el repositorio:
    ```bash
-   git clone https://github.com/TU_USUARIO/mi-proyecto-flask.git
-   cd mi-proyecto-flask
+   git clone https://github.com/Dvdroi/mi_proyecto_flask.git
+   cd mi_proyecto_flask
    ```
 
-2. **Crea un entorno virtual**:
-   ```bash
-   python -m venv venv
-   ```
-
-3. **Activa el entorno virtual**:
-   ```bash
-   # Windows
-   venv\Scripts\activate
-   
-   # macOS/Linux
-   source venv/bin/activate
-   ```
-
-4. **Instala las dependencias**:
+2. Instala las dependencias:
    ```bash
    pip install -r requirements.txt
    ```
 
-5. **Ejecuta la aplicación**:
+3. Ejecuta la aplicación:
    ```bash
    python app.py
    ```
 
-6. **Abre tu navegador** en: http://127.0.0.1:5000
+4. Abre tu navegador en `http://localhost:5000`
 
 ## 📁 Estructura del proyecto
 
 ```
 mi_proyecto_flask/
-├── app.py                 # Aplicación principal
-├── requirements.txt       # Dependencias
-├── README.md             # Este archivo
-├── .gitignore            # Archivos a ignorar por Git
+│
+├── app.py                 # Aplicación Flask principal
+├── requirements.txt       # Dependencias Python
 ├── templates/            # Plantillas HTML
 │   ├── base.html
 │   ├── index.html
-│   ├── formulario.html
-│   ├── resultado.html
-│   ├── datos_txt.html
-│   ├── datos_json.html
-│   ├── datos_csv.html
-│   └── datos_sqlite.html
-├── static/               # Archivos estáticos
+│   └── formulario.html
+├── static/              # Archivos estáticos
 │   └── styles.css
-├── datos/               # Archivos de datos (TXT, JSON, CSV)
-└── database/            # Base de datos SQLite
+└── datos/              # Archivos de datos (se crea automáticamente)
+    ├── usuarios.txt
+    ├── usuarios.json
+    ├── usuarios.csv
+    └── usuarios.db
 ```
 
-## 🌐 Demo en vivo
+## 🤝 Contribuciones
 
-La aplicación está desplegada en Render: [Enlace a tu app]
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir qué te gustaría cambiar.
 
-## 👨‍💻 Autor
+## 📄 Licencia
 
-Tu Nombre - [Tu GitHub](https://github.com/TU_USUARIO)
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+Este proyecto está bajo la Licencia MIT.
 
 ---
 
-⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
-=======
-"# Mi Proyecto Flask" 
-"Aplicaci�n web desarrollada con Flask" 
->>>>>>> 9bddd804a0b953ccb0f048ca2ad739fcc0ce6349
+Desarrollado con ❤️ por [Dvdroi](https://github.com/Dvdroi)
