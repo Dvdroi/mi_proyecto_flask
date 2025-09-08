@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Formulario - Mi Proyecto Flask{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Agregar Nuevo Usuario</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/procesar">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="edad" class="form-label">Edad:</label>
+                        <input type="number" class="form-control" id="edad" name="edad" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="metodo" class="form-label">Método de guardado:</label>
+                        <select class="form-select" id="metodo" name="metodo" required>
+                            <option value="">Selecciona un método...</option>
+                            <option value="txt">Archivo TXT</option>
+                            <option value="json">Archivo JSON</option>
+                            <option value="csv">Archivo CSV</option>
+                            <option value="sqlite">Base de datos SQLite</option>
+                            <option value="todos">Todos los métodos</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Guardar Datos</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

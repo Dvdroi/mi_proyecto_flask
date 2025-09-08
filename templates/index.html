@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Mi Proyecto Flask{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">¡Bienvenido a Mi Proyecto Flask!</h1>
+            <p class="lead">Este proyecto demuestra la persistencia de datos usando diferentes métodos:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">📄 Archivos TXT</li>
+                <li class="list-group-item">📋 Archivos JSON</li>
+                <li class="list-group-item">📊 Archivos CSV</li>
+                <li class="list-group-item">🗄️ Base de datos SQLite</li>
+            </ul>
+            <hr class="my-4">
+            <p>Navega por las diferentes secciones para ver cómo funciona cada método de persistencia.</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('formulario') }}" role="button">Empezar</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold text-primary">Acerca de mí</h1>
+                    <p class="lead">Conoce más sobre mi trayectoria como desarrollador</p>
+                </div>
+                
+                <div class="card shadow-lg border-0 mb-5">
+                    <div class="card-body p-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center mb-4 mb-md-0">
+                                <div class="avatar-placeholder bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+                                    <i class="fas fa-user fa-4x text-white"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="fw-bold mb-3">David Cerda</h3>
+                                <p class="text-muted mb-3">Desarrollador Full Stack</p>
+                                <p>Soy un desarrollador apasionado con experiencia en tecnologías web modernas. Me especializo en crear aplicaciones web robustas y escalables usando Python, Flask y tecnologías frontend.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary">
+                                    <i class="fas fa-code me-2"></i>Tecnologías
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>Python & Flask</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>HTML5 & CSS3</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>JavaScript</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bootstrap</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Git & GitHub</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-0 shadow">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary">
+                                    <i class="fas fa-heart me-2"></i>Pasiones
+                                </h4>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-star text-warning me-2"></i>Código limpio</li>
+                                    <li><i class="fas fa-star text-warning me-2"></i>Soluciones innovadoras</li>
+                                    <li><i class="fas fa-star text-warning me-2"></i>Aprendizaje continuo</li>
+                                    <li><i class="fas fa-star text-warning me-2"></i>Trabajo en equipo</li>
+                                    <li><i class="fas fa-star text-warning me-2"></i>Nuevas tecnologías</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="/contact" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>¡Trabajemos juntos!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
