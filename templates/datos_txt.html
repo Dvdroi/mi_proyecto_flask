@@ -1,48 +1,74 @@
 {% extends "base.html" %}
-{% block title %}Datos TXT - Mi Proyecto Flask{% endblock %}
+
+{% block title %}Agregar Datos - Mi Proyecto Flask{% endblock %}
+
 {% block content %}
-<div class="row">
-    <div class="col-md-10 mx-auto">
-        <div class="card">
-            <div class="card-header">
-                <h3>📄 Datos desde Archivo TXT</h3>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-plus-circle me-2"></i>Agregar Nuevos Datos
+                </h3>
             </div>
             <div class="card-body">
-                {% if usuarios %}
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Edad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for usuario in usuarios %}
-                                <tr>
-                                    <td>{{ usuario.fecha }}</td>
-                                    <td>{{ usuario.nombre }}</td>
-                                    <td>{{ usuario.email }}</td>
-                                    <td>{{ usuario.edad }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                <form method="POST" action="{{ url_for('formulario') }}">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label fw-bold">
+                            <i class="fas fa-heading me-1"></i>Título:
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="titulo" 
+                               name="titulo" 
+                               required 
+                               placeholder="Escribe un título descriptivo"
+                               value="{{ request.form.titulo or '' }}">
+                        <div class="form-text">Máximo 200 caracteres</div>
                     </div>
-                {% else %}
-                    <div class="alert alert-info">
-                        <h5>No hay datos disponibles</h5>
-                        <p>Aún no se han guardado datos en el archivo TXT.</p>
-                        <a href="{{ url_for('formulario') }}" class="btn btn-primary">Agregar datos</a>
+                    
+                    <div class="mb-4">
+                        <label for="contenido" class="form-label fw-bold">
+                            <i class="fas fa-edit me-1"></i>Contenido:
+                        </label>
+                        <textarea class="form-control" 
+                                  id="contenido" 
+                                  name="contenido" 
+                                  required 
+                                  rows="6" 
+                                  placeholder="Escribe aquí el contenido de tus datos...">{{ request.form.contenido or '' }}</textarea>
+                        <div class="form-text">Describe detalladamente la información que quieres guardar</div>
                     </div>
-                {% endif %}
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save me-2"></i>Guardar Datos
+                        </button>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-arrow-left me-2"></i>Volver
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="mt-3">
-            <a href="{{ url_for('index') }}" class="btn btn-secondary">Volver al inicio</a>
-            <a href="{{ url_for('formulario') }}" class="btn btn-primary">Agregar más datos</a>
+        
+        <!-- Información adicional -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-info-circle me-2 text-info"></i>¿Qué puedes guardar aquí?
+                </h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Notas personales</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Ideas y pensamientos</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Información importante</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Recordatorios</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Cualquier texto que quieras conservar</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <small class="text-muted">Todos los datos se guardan de forma segura en tu cuenta</small>
+                </div>
+            </div>
         </div>
     </div>
 </div>

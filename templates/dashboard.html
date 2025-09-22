@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Mi Proyecto Flask{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="welcome-header bg-gradient p-4 rounded-3 text-white mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-bold mb-2">
+                        <i class="fas fa-tachometer-alt me-2"></i>¡Bienvenido, {{ usuario.nombre }}!
+                    </h1>
+                    <p class="lead mb-0">Esta es tu área personal. Aquí puedes gestionar todos tus datos y acceder a las funcionalidades de la aplicación.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="user-avatar bg-light text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem;">
+                        {{ usuario.nombre[0].upper() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card card bg-primary text-white">
+            <div class="card-body text-center">
+                <i class="fas fa-file-alt fa-3x mb-3"></i>
+                <h3 class="mb-1">{{ datos|length }}</h3>
+                <p class="mb-0">Datos Guardados</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card card bg-success text-white">
+            <div class="card-body text-center">
+                <i class="fas fa-user fa-3x mb-3"></i>
+                <h3 class="mb-1">1</h3>
+                <p class="mb-0">Usuario Activo</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card card bg-info text-white">
+            <div class="card-body text-center">
+                <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                <h3 class="mb-1">100%</h3>
+                <p class="mb-0">Seguridad</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card card bg-warning text-dark">
+            <div class="card-body text-center">
+                <i class="fas fa-clock fa-3x mb-3"></i>
+                <h3 class="mb-1">24/7</h3>
+                <p class="mb-0">Disponible</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="action-card card h-100 shadow-sm border-0">
+            <div class="card-body text-center p-4">
+                <div class="action-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                    <i class="fas fa-plus-circle fa-2x"></i>
+                </div>
+                <h5 class="card-title">Agregar Datos</h5>
+                <p class="card-text">Guarda nueva información de forma rápida y segura en tu cuenta personal.</p>
+                <a href="{{ url_for('formulario') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Agregar Ahora
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="action-card card h-100 shadow-sm border-0">
+            <div class="card-body text-center p-4">
+                <div class="action-icon bg-success text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                    <i class="fas fa-user fa-2x"></i>
+                </div>
+                <h5 class="card-title">Mi Perfil</h5>
+                <p class="card-text">Ver y gestionar la información de tu cuenta y preferencias personales.</p>
+                <a href="{{ url_for('perfil') }}" class="btn btn-success">
+                    <i class="fas fa-user me-2"></i>Ver Perfil
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="action-card card h-100 shadow-sm border-0">
+            <div class="card-body text-center p-4">
+                <div class="action-icon bg-info text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                    <i class="fas fa-cog fa-2x"></i>
+                </div>
+                <h5 class="card-title">Configuración</h5>
+                <p class="card-text">Personaliza tu experiencia y ajusta las configuraciones de tu cuenta.</p>
+                <button class="btn btn-info" disabled>
+                    <i class="fas fa-cog me-2"></i>Próximamente
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if datos %}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                <h4 class="mb-0">
+                    <i class="fas fa-list me-2"></i>Tus Datos Recientes
+                    <span class="badge bg-primary ms-2">{{ datos|length }}</span>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for dato in datos[:6] %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card border-start border-primary border-4">
+                            <div class="card-body">
+                                <h6 class="card-title text-primary">{{ dato.titulo[:50] }}{% if dato.titulo|length > 50 %}...{% endif %}</h6>
+                                <p class="card-text text-muted small">{{ dato.contenido[:100] }}{% if dato.contenido|length > 100 %}...{% endif %}</p>
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-1"></i>{{ dato.fecha_creacion.strftime('%d/%m/%Y %H:%M') if dato.fecha_creacion else 'Fecha no disponible' }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                {% if datos|length > 6 %}
+                <div class="text-center">
+                    <p class="text-muted">... y {{ datos|length - 6 }} más</p>
+                    <button class="btn btn-outline-primary" onclick="showAllData()">
+                        <i class="fas fa-eye me-2"></i>Ver Todos los Datos
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card bg-light border-0">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-inbox fa-4x text-muted mb-3"></i>
+                <h4 class="text-muted">No tienes datos guardados aún</h4>
+                <p class="text-muted mb-4">¡Comienza agregando tu primera información!</p>
+                <a href="{{ url_for('formulario') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus-circle me-2"></i>Agregar Mi Primer Dato
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function showAllData() {
+    // Aquí podrías implementar un modal o expandir la vista
+    alert('Funcionalidad para ver todos los datos - Por implementar');
+}
+</script>
+{% endblock %}

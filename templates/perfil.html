@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Mi Perfil - Mi Proyecto Flask{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Mi Perfil</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="profile-avatar bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 120px; height: 120px; font-size: 3rem;">
+                            {{ usuario.nombre[0].upper() }}
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h4>{{ usuario.nombre }}</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 text-muted">ID de Usuario:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="mb-0">{{ usuario.id }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 text-muted">Nombre Completo:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="mb-0">{{ usuario.nombre }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 text-muted">Email:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="mb-0">{{ usuario.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-primary me-2">Volver al Dashboard</a>
+                            <button class="btn btn-outline-secondary" disabled>Editar Perfil (Próximamente)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
