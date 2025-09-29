@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Productos{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">
+                    <i class="bi bi-list-ul"></i> Listado de Productos
+                </h4>
+                <a href="{{ url_for('crear') }}" class="btn btn-light btn-sm">
+                    <i class="bi bi-plus-lg"></i> Nuevo Producto
+                </a>
+            </div>
+            <div class="card-body">
+                {% if productos %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos %}
+                            <tr>
+                                <td>{{ producto.id_producto }}</td>
+                                <td>{{ producto.nombre }}</td>
+                                <td>${{ '{:.2f}'.format(producto.precio) }}</td>
+                                <td>
+                                    {% if producto.stock < 10 %}
+                                        <span class="badge bg-danger">
+                                    {% elif producto.stock < 30 %}
+                                        <span class="badge bg-warning text-dark">
+                                    {% else %}
+                                        <span class="badge bg-success">
+                                    {% endif %}
+                                        {{ producto.stock }} unidades
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ url_for('editar', id=producto.id_producto) }}" 
+                                           class="btn btn-sm btn-warning" 
+                                           title="Editar">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="{{ url_for('eliminar', id=producto.id_producto) }}" 
+                                           class="btn btn-sm btn-danger" 
+                                           onclick="return confirm('¿Estás seguro de eliminar el producto {{ producto.nombre }}? Esta acción no se puede deshacer.')"
+                                           title="Eliminar">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3">
+                    <p class="text-muted">
+                        <i class="bi bi-info-circle"></i>
+                        Total de productos: <strong>{{ productos|length }}</strong>
+                    </p>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i>
+                    No hay productos registrados. 
+                    <a href="{{ url_for('crear') }}" class="alert-link">Crea uno ahora</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// El confirm() ya maneja la confirmación, no necesitamos más código
+</script>
+{% endblock %}

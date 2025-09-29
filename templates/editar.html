@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Producto{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">
+                    <i class="bi bi-pencil-square"></i> Editar Producto
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i>
+                    Editando producto: <strong>{{ producto.nombre }}</strong> (ID: {{ producto.id_producto }})
+                </div>
+
+                <form method="POST" action="{{ url_for('editar', id=producto.id_producto) }}" id="formEditar">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">
+                            <i class="bi bi-tag"></i> Nombre del Producto
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="nombre" 
+                               name="nombre" 
+                               value="{{ producto.nombre }}"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">
+                            <i class="bi bi-currency-dollar"></i> Precio
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" 
+                                   class="form-control" 
+                                   id="precio" 
+                                   name="precio" 
+                                   step="0.01" 
+                                   min="0"
+                                   value="{{ producto.precio }}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">
+                            <i class="bi bi-box-seam"></i> Stock
+                        </label>
+                        <input type="number" 
+                               class="form-control" 
+                               id="stock" 
+                               name="stock" 
+                               min="0"
+                               value="{{ producto.stock }}"
+                               required>
+                        <div class="form-text">
+                            Stock actual: 
+                            <span class="badge {% if producto.stock < 10 %}bg-danger{% elif producto.stock < 30 %}bg-warning{% else %}bg-success{% endif %}">
+                                {{ producto.stock }} unidades
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning">
+                            <i class="bi bi-check-circle"></i> Actualizar Producto
+                        </button>
+                        <a href="{{ url_for('productos') }}" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <h6 class="card-title text-danger">
+                    <i class="bi bi-exclamation-triangle"></i> Zona de Peligro
+                </h6>
+                <p class="text-muted small">
+                    Si deseas eliminar este producto permanentemente:
+                </p>
+                <button type="button" 
+                        class="btn btn-danger btn-sm" 
+                        onclick="confirmarEliminacion()">
+                    <i class="bi bi-trash"></i> Eliminar Producto
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmación -->
+<div class="modal fade" id="modalEliminar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="bi bi-exclamation-triangle"></i> Confirmar Eliminación
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal

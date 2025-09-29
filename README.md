@@ -1,153 +1,131 @@
-# Proyecto Flask con MySQL
+# Sistema CRUD con Flask y MySQL
 
-Este es un proyecto Flask que integra una base de datos MySQL para el manejo de usuarios y datos del sistema.
+Sistema de gestión de productos desarrollado con Flask y MySQL que implementa las operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
 
-## Características
+## 📋 Características
 
-- ✅ Aplicación Flask funcional
-- ✅ Conexión a base de datos MySQL
-- ✅ Tabla de usuarios con operaciones básicas
-- ✅ API REST endpoints
-- ✅ Manejo de errores
+- ✅ Crear nuevos productos
+- ✅ Visualizar lista de productos
+- ✅ Editar productos existentes
+- ✅ Eliminar productos con confirmación
+- ✅ Validación de datos
+- ✅ Interfaz responsive con Bootstrap 5
+- ✅ Mensajes flash para feedback al usuario
 
-## Estructura del Proyecto
+## 🛠️ Tecnologías Utilizadas
 
-```
-mi_proyecto_flask/
-│
-├── app.py                 # Aplicación principal Flask
-├── conexion/
-│   └── conexion.py       # Configuración de conexión MySQL
-├── database_script.sql   # Script de base de datos
-├── requirements.txt      # Dependencias
-└── README.md            # Este archivo
-```
+- Python 3.x
+- Flask 3.0.0
+- MySQL
+- Bootstrap 5
+- Bootstrap Icons
 
-## Instalación
+## 📦 Instalación
 
-### 1. Prerrequisitos
-
-- Python 3.7 o superior
-- MySQL Server instalado
-- Git
-
-### 2. Clonar el repositorio
+### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/Dvdroi/mi_proyecto_flask.git
-cd mi_proyecto_flask
+git clone [tu-repositorio-url]
+cd [nombre-carpeta]
 ```
 
-### 3. Crear entorno virtual
+### 2. Crear entorno virtual
 
 ```bash
+# Windows
 python -m venv venv
-```
-
-### 4. Activar entorno virtual
-
-**Windows:**
-```bash
 venv\Scripts\activate
-```
 
-**macOS/Linux:**
-```bash
+# Linux/Mac
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 5. Instalar dependencias
+### 3. Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Configurar MySQL
+### 4. Configurar la base de datos
 
-1. Instalar MySQL si no lo tienes
-2. Crear la base de datos ejecutando el script:
+1. Asegúrate de tener MySQL instalado y ejecutándose
+2. Importa el script SQL:
 
-```sql
-mysql -u root -p < database_script.sql
+```bash
+mysql -u root -p < base_datos.sql
 ```
 
-3. Actualizar las credenciales en `conexion/conexion.py`:
+3. Edita el archivo `database.py` con tus credenciales de MySQL:
 
 ```python
-DB_CONFIG = {
-    'host': 'localhost',
-    'database': 'desarrollo_web',
-    'user': 'root',
-    'password': 'admin',  # Cambia por tu contraseña
-    'port': 3306
-}
+self.user = "tu_usuario"
+self.password = "tu_contraseña"
 ```
 
-## Uso
-
-### Ejecutar la aplicación
+### 5. Ejecutar la aplicación
 
 ```bash
 python app.py
 ```
 
-La aplicación estará disponible en `http://localhost:5000`
+La aplicación estará disponible en: `http://localhost:5000`
 
-### Endpoints disponibles
+## 📁 Estructura del Proyecto
 
-- `GET /` - Página principal
-- `GET /test_db` - Probar conexión a base de datos
-- `GET /usuarios` - Obtener lista de usuarios
-
-## Estructura de Base de Datos
-
-### Tabla: usuarios
-
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| id_usuario | INT (PK, AUTO_INCREMENT) | ID único del usuario |
-| nombre | VARCHAR(100) | Nombre del usuario |
-| mail | VARCHAR(255) | Email único del usuario |
-| fecha_creacion | TIMESTAMP | Fecha de creación |
-| fecha_modificacion | TIMESTAMP | Fecha de última modificación |
-
-## Comandos Útiles
-
-### Probar conexión a MySQL
-
-```bash
-python conexion/conexion.py
+```
+proyecto-flask/
+│
+├── app.py                 # Aplicación principal Flask
+├── database.py            # Configuración de base de datos
+├── base_datos.sql         # Script SQL
+├── requirements.txt       # Dependencias Python
+├── README.md             # Este archivo
+│
+└── templates/            # Plantillas HTML
+    ├── base.html         # Plantilla base
+    ├── index.html        # Página de inicio
+    ├── productos.html    # Lista de productos
+    ├── crear.html        # Formulario crear
+    └── editar.html       # Formulario editar
 ```
 
-### Verificar tablas en MySQL
+## 🚀 Uso
 
-```sql
-USE desarrollo_web;
-SHOW TABLES;
-SELECT * FROM usuarios;
-```
+### Crear Producto
+1. Navega a "Nuevo Producto"
+2. Completa el formulario con nombre, precio y stock
+3. Haz clic en "Guardar Producto"
 
-## Desarrollo
+### Ver Productos
+1. Navega a "Productos"
+2. Verás una tabla con todos los productos registrados
 
-Para agregar nuevas funcionalidades:
+### Editar Producto
+1. En la lista de productos, haz clic en el botón de editar (lápiz)
+2. Modifica los datos necesarios
+3. Haz clic en "Actualizar Producto"
 
-1. Crear nuevas rutas en `app.py`
-2. Agregar tablas necesarias en `database_script.sql`
-3. Actualizar este README con los cambios
+### Eliminar Producto
+1. En la lista de productos, haz clic en el botón de eliminar (basura)
+2. Confirma la eliminación en el modal que aparece
 
-## Contribuir
+## 🔒 Seguridad
 
-1. Fork el proyecto
-2. Crear rama para nueva funcionalidad
-3. Hacer commit de los cambios
-4. Push a la rama
-5. Crear Pull Request
+- Validación de datos en servidor
+- Uso de consultas parametrizadas para prevenir SQL Injection
+- Confirmación antes de eliminar registros
 
-## Licencia
+## 📝 Notas
 
-Este proyecto está bajo la Licencia MIT.
+- Asegúrate de cambiar la `secret_key` en `app.py` en producción
+- Las credenciales de base de datos deben mantenerse seguras
+- No subir credenciales a repositorios públicos
 
-## Contacto
+## 👨‍💻 Autor
 
-David - Desarrollador
-Enlace del Proyecto: https://github.com/Dvdroi/mi_proyecto_flask.git
+[Tu Nombre]
+
+## 📄 Licencia
+
+Este proyecto es de código abierto para fines educativos.

@@ -1,119 +1,77 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Inicio - Mi Proyecto Flask{% endblock %}
+{% block title %}Inicio - Sistema CRUD{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <div class="hero-section bg-gradient p-5 rounded-3 text-white text-center mb-5">
-            <h1 class="display-4 fw-bold mb-3">
-                <i class="fas fa-rocket me-3"></i>¡Bienvenido a Mi App Flask!
-            </h1>
-            <p class="lead mb-4">Una aplicación web moderna con sistema de autenticación, base de datos MySQL y gestión de datos personales.</p>
+<div class="row mt-5">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="display-4 mb-4">
+            <i class="bi bi-cart-check text-primary"></i>
+            Bienvenido al Sistema CRUD
+        </h1>
+        <p class="lead text-muted mb-5">
+            Gestiona tu inventario de productos de manera simple y eficiente
+        </p>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-list-ul text-primary" style="font-size: 3rem;"></i>
+                        <h5 class="card-title mt-3">Ver Productos</h5>
+                        <p class="card-text text-muted">
+                            Consulta todos los productos registrados en el sistema
+                        </p>
+                        <a href="{{ url_for('productos') }}" class="btn btn-primary">
+                            <i class="bi bi-eye"></i> Ver Listado
+                        </a>
+                    </div>
+                </div>
+            </div>
             
-            {% if current_user.is_authenticated %}
-                <div class="user-welcome bg-light bg-opacity-25 p-4 rounded mb-4">
-                    <h3><i class="fas fa-user-circle me-2"></i>¡Hola {{ current_user.nombre }}!</h3>
-                    <p class="mb-0">Qué bueno verte de nuevo. ¿Qué te gustaría hacer hoy?</p>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-plus-circle text-success" style="font-size: 3rem;"></i>
+                        <h5 class="card-title mt-3">Nuevo Producto</h5>
+                        <p class="card-text text-muted">
+                            Registra un nuevo producto en tu inventario
+                        </p>
+                        <a href="{{ url_for('crear') }}" class="btn btn-success">
+                            <i class="bi bi-plus-lg"></i> Crear Producto
+                        </a>
+                    </div>
                 </div>
-                <div class="btn-group" role="group">
-                    <a class="btn btn-light btn-lg me-2" href="{{ url_for('dashboard') }}">
-                        <i class="fas fa-tachometer-alt me-2"></i>Mi Dashboard
-                    </a>
-                    <a class="btn btn-outline-light btn-lg" href="{{ url_for('formulario') }}">
-                        <i class="fas fa-plus-circle me-2"></i>Agregar Datos
-                    </a>
-                </div>
-            {% else %}
-                <p class="mb-4">Únete a nuestra plataforma para gestionar tus datos de forma segura y organizada.</p>
-                <div class="btn-group" role="group">
-                    <a class="btn btn-light btn-lg me-2" href="{{ url_for('registro') }}">
-                        <i class="fas fa-user-plus me-2"></i>Registrarse
-                    </a>
-                    <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">
-                        <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
-                    </a>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="row g-4 mb-5">
-    <div class="col-md-4">
-        <div class="feature-card card h-100 border-0 shadow-sm">
-            <div class="card-body text-center p-4">
-                <div class="feature-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                    <i class="fas fa-shield-alt fa-2x"></i>
-                </div>
-                <h5 class="card-title">🔐 Autenticación Segura</h5>
-                <p class="card-text">Sistema completo de registro y login con encriptación de contraseñas y protección de sesiones.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-4">
-        <div class="feature-card card h-100 border-0 shadow-sm">
-            <div class="card-body text-center p-4">
-                <div class="feature-icon bg-success text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                    <i class="fas fa-database fa-2x"></i>
-                </div>
-                <h5 class="card-title">🗄️ Base de Datos MySQL</h5>
-                <p class="card-text">Integración robusta con MySQL para el almacenamiento confiable y eficiente de todos tus datos.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-4">
-        <div class="feature-card card h-100 border-0 shadow-sm">
-            <div class="card-body text-center p-4">
-                <div class="feature-icon bg-info text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
-                    <i class="fas fa-mobile-alt fa-2x"></i>
-                </div>
-                <h5 class="card-title">📱 Diseño Responsive</h5>
-                <p class="card-text">Interfaz moderna y elegante que se adapta perfectamente a cualquier dispositivo móvil o desktop.</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card border-0 bg-light">
+<div class="row mt-5">
+    <div class="col-md-10 mx-auto">
+        <div class="card bg-light">
             <div class="card-body">
-                <h4><i class="fas fa-question-circle text-primary me-2"></i>¿Qué puedes hacer?</h4>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Crear y gestionar tu cuenta personal</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Guardar y organizar tus datos importantes</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Acceder a tu información desde cualquier lugar</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Mantener tus datos seguros y privados</li>
+                <h5 class="card-title">
+                    <i class="bi bi-info-circle"></i> Funcionalidades del Sistema
+                </h5>
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <strong>Crear:</strong> Registra nuevos productos con nombre, precio y stock
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <strong>Leer:</strong> Visualiza todos los productos en una tabla organizada
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <strong>Actualizar:</strong> Modifica la información de productos existentes
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <strong>Eliminar:</strong> Elimina productos que ya no necesites
+                    </li>
                 </ul>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-6">
-        <div class="card border-0 bg-primary text-white">
-            <div class="card-body">
-                <h4><i class="fas fa-cog me-2"></i>Tecnologías Utilizadas</h4>
-                <div class="row text-center">
-                    <div class="col-6 mb-3">
-                        <i class="fab fa-python fa-3x mb-2"></i>
-                        <p class="mb-0">Python Flask</p>
-                    </div>
-                    <div class="col-6 mb-3">
-                        <i class="fas fa-database fa-3x mb-2"></i>
-                        <p class="mb-0">MySQL</p>
-                    </div>
-                    <div class="col-6">
-                        <i class="fab fa-bootstrap fa-3x mb-2"></i>
-                        <p class="mb-0">Bootstrap</p>
-                    </div>
-                    <div class="col-6">
-                        <i class="fab fa-js-square fa-3x mb-2"></i>
-                        <p class="mb-0">JavaScript</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

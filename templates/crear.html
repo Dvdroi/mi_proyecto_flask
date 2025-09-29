@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-plus-circle"></i> Crear Nuevo Producto
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('crear') }}" id="formCrear">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">
+                            <i class="bi bi-tag"></i> Nombre del Producto
+                        </label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="nombre" 
+                               name="nombre" 
+                               placeholder="Ej: Laptop HP"
+                               required>
+                        <div class="form-text">
+                            Ingresa un nombre descriptivo para el producto
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">
+                            <i class="bi bi-currency-dollar"></i> Precio
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" 
+                                   class="form-control" 
+                                   id="precio" 
+                                   name="precio" 
+                                   step="0.01" 
+                                   min="0"
+                                   placeholder="0.00"
+                                   required>
+                        </div>
+                        <div class="form-text">
+                            Precio unitario del producto
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">
+                            <i class="bi bi-box-seam"></i> Stock
+                        </label>
+                        <input type="number" 
+                               class="form-control" 
+                               id="stock" 
+                               name="stock" 
+                               min="0"
+                               placeholder="0"
+                               required>
+                        <div class="form-text">
+                            Cantidad disponible en inventario
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-circle"></i> Guardar Producto
+                        </button>
+                        <a href="{{ url_for('productos') }}" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-3 bg-light">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <i class="bi bi-lightbulb"></i> Consejos
+                </h6>
+                <ul class="small mb-0">
+                    <li>Utiliza nombres descriptivos y únicos</li>
+                    <li>Verifica que el precio sea correcto</li>
+                    <li>Actualiza el stock regularmente</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('formCrear').addEventListener('submit', function(e) {
+    const precio = parseFloat(document.getElementById('precio').value);
+    const stock = parseInt(document.getElementById('stock').value);
+    
+    if (precio < 0) {
+        e.preventDefault();
+        alert('El precio no puede ser negativo');
+        return;
+    }
+    
+    if (stock < 0) {
+        e.preventDefault();
+        alert('El stock no puede ser negativo');
+        return;
+    }
+});
+</script>
+{% endblock %}
