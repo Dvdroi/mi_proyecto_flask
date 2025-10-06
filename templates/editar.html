@@ -104,4 +104,30 @@
                 <h5 class="modal-title">
                     <i class="bi bi-exclamation-triangle"></i> Confirmar Eliminación
                 </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar el producto <strong>{{ producto.nombre }}</strong>?</p>
+                <p class="text-danger">
+                    <i class="bi bi-exclamation-triangle"></i> Esta acción no se puede deshacer.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </button>
+                <a href="{{ url_for('eliminar', id=producto.id_producto) }}" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Eliminar Definitivamente
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmarEliminacion() {
+    var modal = new bootstrap.Modal(document.getElementById('modalEliminar'));
+    modal.show();
+}
+</script>
+{% endblock %}

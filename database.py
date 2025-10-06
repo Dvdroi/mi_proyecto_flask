@@ -23,18 +23,21 @@ class Database:
             return None
     
     def execute_query(self, query, params=None):
+        """Ejecuta INSERT, UPDATE, DELETE"""
         connection = self.get_connection()
         if connection:
             try:
-                cursor = connection.cursor(dictionary=True)
+                cursor = connection.cursor()
                 if params:
                     cursor.execute(query, params)
                 else:
                     cursor.execute(query)
                 connection.commit()
-                return cursor
+                rows_affected = cursor.rowcount
+                return rows_affected
             except Error as e:
                 print(f"Error ejecutando query: {e}")
+                connection.rollback()
                 return None
             finally:
                 if connection.is_connected():
@@ -42,6 +45,7 @@ class Database:
                     connection.close()
     
     def fetch_all(self, query, params=None):
+        """Obtiene múltiples registros"""
         connection = self.get_connection()
         if connection:
             try:
@@ -61,6 +65,7 @@ class Database:
                     connection.close()
     
     def fetch_one(self, query, params=None):
+        """Obtiene un solo registro"""
         connection = self.get_connection()
         if connection:
             try:
